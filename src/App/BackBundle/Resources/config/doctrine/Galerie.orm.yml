@@ -1,0 +1,38 @@
+App\BackBundle\Entity\Galerie:
+    type: entity
+    table: galerie
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        titre:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        description:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        lien:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

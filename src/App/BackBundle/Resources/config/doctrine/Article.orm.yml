@@ -1,0 +1,49 @@
+App\BackBundle\Entity\Article:
+    type: entity
+    table: article
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        titre:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        contenu:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        datePub:
+            type: date
+            nullable: true
+            comment: ''
+            column: date_pub
+        image:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        statut:
+            type: boolean
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        auteur:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

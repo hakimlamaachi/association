@@ -1,0 +1,9 @@
+
+app_back:
+    resource: "@AppBackBundle/Resources/config/routing.yml"
+    prefix:   /back
+
+app_front:
+    resource: "@AppFrontBundle/Resources/config/routing.yml"
+    prefix:   /front
+

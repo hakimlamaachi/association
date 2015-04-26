@@ -1,0 +1,157 @@
+{% extends '::layout.html.twig' %}
+{% block title %} create {% endblock %}
+
+      {% block pageTitle %}
+          <i class="glyphicon glyphicon-refresh"> </i>ajouter un personnne
+      {% endblock %}
+       {% block breadcrumb %}
+           <li><a class="active">liste des personnes</a></li>
+           <li class="active">ajout un personne</li>
+       {% endblock %}
+{% block content %}
+    <div class="panel panel-default">
+        {{ form_start(edit_form,{'attr' : {'class' : 'form-horizontal form-bordered', 'novalidate':'novalidate' }})}}
+        <div class="panel-heading">
+            <div class="panel-btns">
+                <a href="#" class="panel-close">&times;</a>
+                <a href="#" class="minimize">&minus;</a>
+            </div>
+            <h4 class="panel-title">Ajout un personne</h4>
+
+            <p>Cette interface permet d'ajouter un nouveau personnne.</p>
+        </div>
+
+        <div class="panel-body panel-body-nopadding">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.nom.vars.id }}">Nom<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.nom,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.prenom.vars.id }}">Prenom<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.prenom,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.email.vars.id }}">E-mail<span
+                            class="asterisk">*</span> :</label>
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.email,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.email.vars.id }}">date de naissnace<span class="asterisk">*</span>
+                    :</label>
+
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="dd-mm-yy" rea id="datepicker" name="date" value="{{entity.dateNaissance|date("d-m-Y")}}">
+                    {#{{ form_widget(form.date,{'id' :'datepicker','attr' : {'class' : 'form-control' }})}}#}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.file.vars.id }}">image<span class="asterisk">*</span>
+                    :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.file,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.fonction.vars.id }}">Fonction<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.fonction,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.role.vars.id }}">Role<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.role,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.verouillage.vars.id }}">verouillage<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.verouillage,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.username.vars.id }}">username<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.username,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.password.vars.id }}">password<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.password,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.adresse.vars.id }}">adresse<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.adresse,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.telephone.vars.id }}">Telephone<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.telephone,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <center>
+                    <button class="btn btn-default" type="submit" name="ajouter"  value="ajouter" >modifier</button>
+                </center>
+            </div>
+        </div>
+    </div>
+    {{ form_rest(edit_form) }}
+{% endblock %}
+ {% block javascripts %}
+
+     {{ parent() }}
+     <script>
+         jQuery(document).ready(function () {
+
+
+             jQuery('#tab-tab').dataTable({
+                 "sPaginationType": "full_numbers"
+             });
+
+             jQuery("select").chosen({
+                 'min-width': '100px',
+                 'white-space': 'nowrap',
+                 disable_search_threshold: 10
+             });
+         });
+     </script>
+     <script>
+         jQuery(document).ready(function () {
+
+             // Date Picker
+             jQuery('#datepicker').datepicker({dateFormat: "dd-mm-yy"});
+
+         });
+     </script>
+ {% endblock %}
+

@@ -1,0 +1,95 @@
+Personnel:
+    type: entity
+    table: personnel
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        prenom:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        email:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        dateNaissance:
+            type: date
+            nullable: true
+            comment: ''
+            column: date_naissance
+        photo:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        fonction:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        role:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        verouillage:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        username:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        password:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        adresse:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        telephone:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        salt:
+            type: boolean
+            nullable: true
+            comment: ''
+        roles:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

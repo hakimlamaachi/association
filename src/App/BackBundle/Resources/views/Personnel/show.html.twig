@@ -1,0 +1,114 @@
+{% extends '::layout.html.twig' %}
+{% block title %} show {% endblock %}
+
+      {% block pageTitle %}
+          <i class="glyphicon glyphicon-refresh"> </i>consulter le profile
+      {% endblock %}
+       {% block breadcrumb %}
+           <li><a class="active">liste des personne</a></li>
+           <li class="active">consulter le profile</li>
+       {% endblock %}
+{% block content -%}
+<div class="contentpanel">
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="thumbnail img-responsive">{% if entity.photo %}<img class="img-responsive"  src="{{ asset(entity.getImageWeb ) }}">{% endif %}</div>
+
+            <div class="mb30"></div>
+
+            <h5 class="subtitle">About</h5>
+            <p class="mb30"><a href="#">{{ entity.fonction }}</a></p>
+
+            <h5 class="subtitle">Connect</h5>
+            <ul class="profile-social-list">
+                <li><i class="fa fa-twitter"></i> <a href="#">twitter.com/{{ entity.nom }}{{ entity.prenom }}</a></li>
+                <li><i class="fa fa-facebook"></i> <a href="#">facebook.com/{{ entity.nom }}{{ entity.prenom }}</a></li>
+            </ul>
+
+            <div class="mb30"></div>
+
+            <h5 class="subtitle">Address</h5>
+            <address>
+                {{ entity.adresse }}
+                <abbr title="Phone">P:</abbr> (+212){{ entity.telephone }}
+            </address>
+
+        </div><!-- col-sm-3 -->
+        <div class="col-sm-9">
+
+            <div class="profile-header">
+                <h2 class="profile-name">{{ entity.nom }} {{ entity.prenom }}</h2>
+                <div class="profile-location"><i class="fa fa-map-marker"></i>{{ entity.adresse }}</div>
+                <div class="profile-position"><i class="fa fa-briefcase"></i>{{ entity.fonction }}</div>
+
+                <div class="mb20"></div>
+                {#{{ form(delete_form ) }}#}
+                {{ form_start(delete_form,{'attr' : {'class' : 'form-horizontal form-bordered', 'novalidate':'novalidate' }})}}
+                <button class="btn btn-danger" href="{{ path('personnel_delete', { 'id': entity.id }) }}"> <i class="glyphicon-remove" ></i> Supprimer</button>
+                {{ form_rest(delete_form) }}
+                <a class="btn btn-default" href="{{ path('personnel') }}"> <i class="fa  fa-list-ol" ></i> Back to the list</a>
+                <a class="btn btn-success mr5" href="{{ path('personnel_edit', { 'id': entity.id }) }}"><i class = "fa  fa-edit"></i>Edit</a>
+            </div>
+            <h1>Personnel</h1>
+
+            <table class="record_properties">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ entity.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Prenom</th>
+                    <td>{{ entity.prenom }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ entity.email }}</td>
+                </tr>
+                <tr>
+                    <th>Datenaissance</th>
+                    <td>{{ entity.dateNaissance|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Photo</th>
+                    <td>{{ entity.photo }}</td>
+                </tr>
+                <tr>
+                    <th>Fonction</th>
+                    <td>{{ entity.fonction }}</td>
+                </tr>
+                <tr>
+                    <th>Role</th>
+                    <td>{{ entity.role }}</td>
+                </tr>
+                <tr>
+                    <th>Verouillage</th>
+                    <td>{{ entity.verouillage }}</td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td>{{ entity.username }}</td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td>{{ entity.password }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ entity.adresse }}</td>
+                </tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td>{{ entity.telephone }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

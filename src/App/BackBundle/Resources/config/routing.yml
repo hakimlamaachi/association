@@ -1,0 +1,28 @@
+app_back_personnel:
+    resource: "@AppBackBundle/Resources/config/routing/personnel.yml"
+    prefix:   /personnel
+
+app_back_admin:
+    resource: "@AppBackBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin
+
+app_back_article:
+    resource: "@AppBackBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+
+
+
+
+app_back_login:
+    path:     /login
+    defaults: { _controller: AppBackBundle:Security:login }
+login_check:
+    path:   /login_check
+
+logout:
+    pattern:   /logout
+
+
+app_back_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AppBackBundle:Default:index }

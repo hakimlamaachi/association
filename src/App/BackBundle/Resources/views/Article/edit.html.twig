@@ -1,0 +1,109 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %} create {% endblock %}
+
+      {% block pageTitle %}
+          <i class="glyphicon glyphicon-refresh"> </i>modifier une article liste
+      {% endblock %}
+       {% block breadcrumb %}
+           <li><a class="active">liste des articles</a></li>
+           <li class="active">modifier Article</li>
+       {% endblock %}
+{% block content %}
+    <div class="panel panel-default">
+        {{ form_start(edit_form,{'attr' : {'class' : 'form-horizontal form-bordered', 'novalidate':'novalidate' }})}}
+        <div class="panel-heading">
+            <div class="panel-btns">
+                <a href="#" class="panel-close">&times;</a>
+                <a href="#" class="minimize">&minus;</a>
+            </div>
+            <h4 class="panel-title">Ajout d'une liste</h4>
+
+            <p>Cette interface permet d'ajouter un nouveau liste.</p>
+        </div>
+
+        <div class="panel-body panel-body-nopadding">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.titre.vars.id }}">Titre<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.titre,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.contenu.vars.id }}">contenu<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.contenu,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.titre.vars.id }}">Date publication<span
+                            class="asterisk">*</span> :</label>
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.datePub,{'attr' : {'class' : 'form-control' }}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.file.vars.id }}">image<span class="asterisk">*</span>
+                    :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.file,{'attr' : {'class' : 'form-control' }}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.auteur.vars.id }}">auteur<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.auteur,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="{{ edit_form.statut.vars.id }}">statut<span
+                            class="asterisk">*</span> :</label>
+
+                <div class="col-sm-6">
+                    {{ form_widget(edit_form.statut,{'attr' : {'class' : 'form-control' }})}}
+                </div>
+            </div>
+            <div class="form-group">
+                <center>
+                    <button class="btn btn-primary" type="submit" name="modifier"  value="modifier" >modifier</button>
+                </center>
+            </div>
+        </div>
+    </div>
+    {{ form_rest(edit_form) }}
+{% endblock %}
+    {% block javascripts %}
+
+        {{ parent() }}
+        <script>
+            jQuery(document).ready(function () {
+
+
+                jQuery('#tab-tab').dataTable({
+                    "sPaginationType": "full_numbers"
+                });
+
+                jQuery("select").chosen({
+                    'min-width': '100px',
+                    'white-space': 'nowrap',
+                    disable_search_threshold: 10
+                });
+            });
+        </script>
+        <script>
+            jQuery(document).ready(function () {
+
+                // Date Picker
+                jQuery('#datepicker').datepicker({dateFormat: "dd-mm-yy"});
+
+            });
+        </script>
+    {% endblock %}
+

@@ -1,0 +1,30 @@
+personnel:
+    path:     /
+    defaults: { _controller: "AppBackBundle:Personnel:index" }
+
+personnel_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBackBundle:Personnel:show" }
+
+personnel_new:
+    path:     /new
+    defaults: { _controller: "AppBackBundle:Personnel:new" }
+
+personnel_create:
+    path:     /create
+    defaults: { _controller: "AppBackBundle:Personnel:create" }
+    methods:  POST
+
+personnel_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBackBundle:Personnel:edit" }
+
+personnel_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBackBundle:Personnel:update" }
+    methods:  [POST, PUT]
+
+personnel_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBackBundle:Personnel:delete" }
+    methods:  [POST, DELETE]

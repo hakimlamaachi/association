@@ -1,0 +1,50 @@
+App\BackBundle\Entity\Contact:
+    type: entity
+    table: contact
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        prenom:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        email:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        objet:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        contenu:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        reponse:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

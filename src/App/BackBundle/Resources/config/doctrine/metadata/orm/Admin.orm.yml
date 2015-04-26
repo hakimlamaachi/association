@@ -1,0 +1,56 @@
+Admin:
+    type: entity
+    table: admin
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        prenom:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        email:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        username:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        password:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        salt:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        roles:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

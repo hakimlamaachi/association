@@ -1,0 +1,61 @@
+{% extends '::layout.html.twig' %}
+{% block title %} show {% endblock %}
+
+      {% block pageTitle %}
+          <i class="glyphicon glyphicon-refresh"> </i>consulter l'article
+      {% endblock %}
+       {% block breadcrumb %}
+           <li><a class="active">liste des articles</a></li>
+           <li class="active">consulter l'article</li>
+       {% endblock %}
+{% block content %}
+    <h3>Article n°: {{ entity.id}}</h3>
+<div class="contentpanel">
+
+
+    <div class="row blog-content">
+        <div class="col-sm-9">
+
+            <div class="panel panel-default panel-blog">
+                <div class="panel-body">
+                    <h3 class="blogsingle-title">{{ entity.titre }}</h3>
+
+                    <ul class="blog-meta">
+                       <h5><li>By: <a href="#">{{ entity.auteur }}</a></li>
+                        <li>{{ entity.datePub|date('Y-m-d') }}</li>
+                       </h5>
+                    </ul>
+                    <br />
+                    <div class="blog-img">{% if entity.image %}<img class="img-responsive"  src="{{ asset(entity.getImageWeb ) }}">{% endif %}</div>
+                    <div class="mb20"></div>
+                    <p>{{ entity.contenu }}</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <div class="blog-sidebar">
+                <ul>
+                    <li> <h4 class="filename text-primary">
+                            <a href="{{ path('article') }}">
+                                Back to the list
+                            </a>
+                        </h4>
+
+                    </li>
+                    <li>
+                        <h4 class="filename text-primary">
+                            <a href="{{ path('article_edit', { 'id': entity.id }) }}">
+                                Edit
+                            </a>
+                        </h4>
+                    </li>
+                   {{ form(delete_form) }}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        App\BackBundle\Entity\Personnel: bcrypt
+
+    role_hierarchy:
+        ROLE_MEMBRE:      ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER,ROLE_MEMBRE, ROLE_ALLOWED_TO_SWITCH]
+
+
+
+    providers:
+        chain_providers:
+            chain:
+                 providers: [in_memory,user_db]
+        in_memory:
+            memory:
+                users:
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+        user_db:
+                entity: { class: AppBackBundle:Personnel, property: username }
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin_secured:
+            pattern:    ^/back/
+            anonymous: ~
+            provider: chain_providers
+            logout:
+                path: /back/logout
+                target: /back/login
+            form_login:
+                login_path: /back/login
+                check_path: /back/login_check
+                default_target_path: /back/article/
+
+
+
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+            - { path: ^/back/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/back/personnel/*, roles: ROLE_ADMIN }
+            - { path: ^/back/*, roles: ROLE_MEMBRE }

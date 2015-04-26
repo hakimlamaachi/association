@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/png">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('css/style.default.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/jquery.datatables.css') }}" rel="stylesheet">
+    {% endblock %}
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('js/html5shiv.js') }}"></script>
+    <script src="{{ asset('js/respond.min.js') }}"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+
+<section>
+
+    <div class="leftpanel">
+
+        <div class="logopanel">
+            <h1><span>[</span> gestion assoc <span>]</span></h1>
+        </div><!-- logopanel -->
+
+        <div class="leftpanelinner">
+
+            <!-- This is only visible to small devices -->
+            <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                <div class="media userlogged">
+                    <img alt="" src="images/photos/loggeduser.png" class="media-object">
+                    <div class="media-body">
+                        <h4>John Doe</h4>
+                        <span>"Life is so..."</span>
+                    </div>
+                </div>
+
+                <h5 class="sidebartitle actitle">Account</h5>
+                <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+                    <li><a href="profile.html"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="#"><i class="fa fa-cog"></i> <span>Account Settings</span></a></li>
+                    <li><a href="#"><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
+                    <li><a href="signout.html"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+                </ul>
+            </div>
+
+            <h5 class="sidebartitle">Navigation</h5>
+            <ul class="nav nav-pills nav-stacked nav-bracket">
+                {% block mainMenu %}
+
+                {% endblock %}
+            </ul>
+
+            <div class="infosummary">
+                <h5 class="sidebartitle">Informations sur le Compte</h5>
+                <ul>
+                   {# {% if is_granted('ROLE_SUPER_ADMIN') == false %}
+                        <li>
+                            <div class="datainfo">
+                                <span class="text-muted">Dernière  connexion</span>
+                                <h4>{{ app.user.lastVisiteAt | date("d/m/Y H:i") }}</h4>
+                            </div>
+                            <div id="sidebar-chart" class="chart"></div>
+                        </li>
+                    {% endif %}#}
+                </ul>
+            </div><!-- infosummary -->
+
+        </div><!-- leftpanelinner -->
+    </div><!-- leftpanel -->
+
+    <div class="mainpanel">
+
+        <div class="headerbar">
+
+            <a class="menutoggle"><i class="fa fa-bars"></i></a>
+
+            <form class="searchform" action="http://themepixels.com/demo/webpage/bracket/index.html" method="post">
+                <input type="text" class="form-control" name="keyword" placeholder="Recherche ici.." />
+            </form>
+
+            <div class="header-right">
+                <ul class="headermenu">
+
+                    <li>
+                        <div id="divreload" class="btn-group">
+                            <button id="nbr_notif" class="btn btn-default dropdown-toggle tp-icon" data-toggle="dropdown">
+                                <i class='glyphicon glyphicon-globe'></i>
+                            </button>
+                            <div id="dropdown-menu" class="dropdown-menu dropdown-menu-head pull-right" >
+
+                                <h5  class='title'></h5>
+
+                                <ul id="list" class="dropdown-list gen-list">
+
+
+
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <img src="{{ asset('images/photos/loggeduser.png') }}" alt="" />
+
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Paramètres</a></li>
+                                <li><a href="{{ path('logout')}}"><i class="glyphicon glyphicon-log-out"></i> Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- header-right -->
+
+        </div><!-- headerbar -->
+
+        <div class="pageheader">
+            <h2>
+                {% block pageTitle %}
+                    <i class="fa fa-home"></i> Dashboard <span>Subtitle goes here...</span>
+                {% endblock %}
+            </h2>
+            <div class="breadcrumb-wrapper">
+                <span class="label">Vous etes ici:</span>
+                <ol class="breadcrumb">
+                    {% block breadcrumb %}
+                        <li><a href="index.html">Bracket</a></li>
+                        <li class="active">Dashboard</li>
+                    {% endblock %}
+                </ol>
+            </div>
+        </div>
+
+        <div class="contentpanel">
+            {% block content %}
+            {% endblock %}
+        </div><!-- contentpanel -->
+
+    </div><!-- mainpanel -->
+
+
+</section>
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-1.10.3.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('js/toggles.min.js') }}"></script>
+    <script src="{{ asset('js/retina.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.cookies.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-timepicker.min.js') }}"></script>
+
+    <script src="{{ asset('js/flot/flot.min.js') }}"></script>
+    <script src="{{ asset('js/flot/flot.resize.min.js') }}"></script>
+    <script src="{{ asset('js/morris.min.js') }}"></script>
+    <script src="{{ asset('js/raphael-2.1.0.min.js') }}"></script>
+
+    <script src="{{ asset('js/jquery.datatables.min.js') }}"></script>
+    <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
+
+
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script>
+
+
+        /*function refresh() {
+            $.ajax({
+                url: "",
+                success:
+                        function(retour){
+
+                            var dem=retour["demandes"];
+                            var rec=retour["reclamations"];
+                            var nbr=dem["id"].length+rec["id"].length;
+                            var str="";
+
+                            for(var j=0 ; j< dem["id"].length; j++){
+                                var id=dem["id"][j];
+                                str+="<li class='new'><a href=''><span class='thumb'></span><span class='desc'><span class='name'> "+dem['nom'][j]+" "+dem['prenom'][j]+"<span class='badge badge-success'>new</span></span><span  class='msg'>a fait une demande ( "+dem['type'][j]+")<br>"+dem['createdAt'][j]+"</span></span></a></li>";
+                            }
+                            for(var j=0 ; j< rec["id"].length; j++){
+                                var id=rec["id"][j];
+                                str+="<li class='new'><a href=''><span class='thumb'></span><span class='desc'><span class='name'> "+rec['nom'][j]+" "+rec['prenom'][j]+"<span class='badge badge-success'>new</span></span><span  class='msg'>a fait une réclamation ( "+rec['type'][j]+")<br>"+rec['createdAt'][j]+"</span></span></a></li>";
+                            }
+
+                            jQuery("#list").html(str);
+                            jQuery("#nbr_notif").append(jQuery("<span class='badge'>"+nbr+"</span>"));
+
+
+
+                            jQuery("#list").append(jQuery("<li class='new'><a href=''>Voir toutes les notifications</a></li>"));
+
+
+                        }
+
+            });
+
+            setTimeout('refresh();',10000);
+
+        }*/
+
+        //refresh();
+    </script>
+
+    <!--script src="{{ asset('js/dashboard.js') }}"></script-->
+{% endblock %}
+</body>
+</html>
